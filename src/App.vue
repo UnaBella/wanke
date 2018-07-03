@@ -1,12 +1,18 @@
 <template>
     <section class="app">
         <header class="this_header">
-            <img src="./assets/img/djlogo.png" alt="logo">
-            <h1>万科有家</h1>
-        </header>
-        <section class="this_section">
+            <img src="./assets/img/wankeLogo.png" alt="logo">
+            <!-- <h1>万科有家</h1> -->
             <nav class="this_nav">
-                <el-menu :router="true" default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+                <el-menu 
+                background-color="#fff"
+                text-color="#de1111"
+                    :router="true" 
+                    default-active="2" 
+                    mode="horizontal" 
+                    class="el-menu-vertical-demo" 
+                    @open="handleOpen" 
+                    @close="handleClose">
                    <el-submenu index="1">
                         <template slot="title"><i class="el-icon-message"></i>放射设置</template>
                             <el-submenu index="1-1">
@@ -42,6 +48,13 @@
                     </el-submenu>
                 </el-menu>
             </nav>
+             <i class="el-icon-bell bell"></i>
+             <i class="el-icon-setting person"></i>
+        </header>
+        <section class="this_section">
+            <!-- <nav class="this_nav">
+                
+            </nav> -->
             <router-view class="view router"></router-view>
         </section>
     </section>
@@ -67,24 +80,42 @@ export default {
 </script>
 <style lang="less" scoped>
     .app{
+        .el-menu--horizontal{
+            border:none;
+        }
+        .f22{
+            font-size:22px;
+        }
         display:flex;
         flex-direction:column;
         height: 100%;
         .this_header{
-            height: 60px;
+            height: 70px;
             display:flex;
             align-items:center;
             border-bottom:3px solid rgb(238, 246, 243);
-            background:#009933;
-            padding-left: .5em;
+            background:#fff;
+            padding-left: 1.5em;
             img{
-                height: 80%;
+                width:100px;
+                // height: 30%;
             }
             h1{
                 margin-left: .5em;
                 font-size: 22px;
                 font-weight: 400;
                 color: #fff;
+            }
+            .this_nav{
+                margin: auto;
+            }
+            .bell{
+                font-size:22px;
+                margin-right: 10px;
+            }
+            .person{
+                font-size:22px;
+                margin-right: 1.5em;
             }
         }
         .this_section{
