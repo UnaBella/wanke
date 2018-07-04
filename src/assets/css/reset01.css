@@ -150,6 +150,9 @@ video {
   height: 0;
   content: ".";
 }
+.none{
+  display: none;
+}
 .fl {
   float: left;
 }
