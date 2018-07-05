@@ -1,18 +1,19 @@
 <template>
     <section class="app">
+        <!--<Default :success="loginHidden"></Default>-->
         <header :class="header?'this_header':'this_header none'">
             <img src="./assets/img/wankeLogo.png" alt="logo">
             <!-- <h1>万科有家</h1> -->
             <nav class="this_nav">
-                <el-menu 
+                <el-menu
                 background-color="#fff"
                 text-color="#ff0909"
                 active-text-color="#e60213"
-                    :router="true" 
-                    default-active="2" 
-                    mode="horizontal" 
-                    class="el-menu-vertical-demo" 
-                    @open="handleOpen" 
+                    :router="true"
+                    default-active="2"
+                    mode="horizontal"
+                    class="el-menu-vertical-demo"
+                    @open="handleOpen"
                     @close="handleClose">
                    <el-submenu index="1">
                         <template slot="title">
@@ -46,29 +47,38 @@
         </header>
         <section class="this_section">
             <!-- <nav class="this_nav">
-                
+
             </nav> -->
             <router-view class="view router"></router-view>
         </section>
     </section>
 </template>
 <script>
+    // import Default from './component/default'
 export default {
     name: 'app',
+    // components:{Default},
     data() {
         return {
-            header:true,
+            header: true,
             activeIndex: '1',
             activeIndex2: '1',
         };
     },
     methods: {
+        loginHidden(){
+            this.header = true;
+            this.$router.push({path: '/log'});
+        },
         handleOpen(key, keyPath) {
             console.log(key, keyPath);
         },
         handleClose(key, keyPath) {
             console.log(key, keyPath);
-        }
+        },
+        // view_application(item){
+        //     this.$refs.viewRequisition.$emit('start', this.copy(item));
+        // },
     }
 }
 </script>

@@ -10,6 +10,8 @@ import './directive/directive.js';
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/css/reset01.css';
 
+/* mockjs*/
+require('./mock/mock.js'); //引入mock
 
 Vue.use(ElementUI)
 // Vue.use(VueRouter)
