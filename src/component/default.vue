@@ -87,7 +87,7 @@
                                 that.$message.success({showClose: true, message: result.msg || '登陆成功', duration: 2000});
                                 console.log(result)
                                 if(result.data.account_type == 1){
-                                    that.$router.push({path: '/radiationPlugin'});
+                                    that.$router.push({path: '/admin/radiationPlugin'});
                                     // this.$emit('success')
                                 }
                             }else {

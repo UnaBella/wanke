@@ -3,6 +3,12 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 
+const Admin = resolve => {
+    require.ensure(['../Admin.vue'], () => {
+        resolve(require('../Admin.vue'))
+    })
+}
+
 //默认页面
 const Default = resolve => {
     require.ensure(['../component/default.vue'], () => {
@@ -45,13 +51,18 @@ const FastWrite = resolve => {
     }
 
 const routes= [
-	{	path: '/fastWrite',				component: FastWrite, 			name: '快速书写模板'},
-	{	path: '/log',					component: Log, 				name: '日志管理'},
-	{	path: '/radiationPlugin',		component: RadiationPlugin, 	name: '放射插件'},
-	{	path: '/diagnoseType',			component: DiagnoseType, 		name: '就诊类别'},
-	{	path: '/default',				component: Default, 			name: '默认首页'},
-	{	path: '/Test',					component: Test, 				name: '公用模块'},
-    {	path: '*',					 	redirect: '/default'}
+
+    {   path: '/Admin',
+        component: Admin,
+        children:[
+            {	path: 'fastWrite',				component: FastWrite, 			name: '快速书写模板'},
+            {	path: 'log',					component: Log, 				name: '日志管理'},
+            {	path: 'radiationPlugin',		component: RadiationPlugin, 	name: '放射插件'},
+            {	path: 'diagnoseType',			component: DiagnoseType, 		name: '就诊类别'},
+            {	path: 'Test',					component: Test, 				name: '公用模块'},
+        ] },
+    {	path: '*',					 	redirect: '/default'},
+    {	path: '/default',				component: Default, 			name: '默认首页'},
 ]
 
 const router = new VueRouter({
