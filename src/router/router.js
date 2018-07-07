@@ -61,8 +61,9 @@ const routes= [
             {	path: 'diagnoseType',			component: DiagnoseType, 		name: '就诊类别'},
             {	path: 'Test',					component: Test, 				name: '公用模块'},
         ] },
-    {	path: '*',					 	redirect: '/default'},
+   
     {	path: '/default',				component: Default, 			name: '默认首页'},
+     {  path: '*',                      redirect: '/default'},
 ]
 
 const router = new VueRouter({
