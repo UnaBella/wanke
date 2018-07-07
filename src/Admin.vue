@@ -18,11 +18,11 @@
 
                     <el-menu-item index="home">首页</el-menu-item>
                     <el-menu-item index="houseResource">房源</el-menu-item>
-                    <el-menu-item index="diagnoseType">客源</el-menu-item>
-                    <el-menu-item index="diagnoseType">成交</el-menu-item>
-                    <el-menu-item index="diagnoseType">业绩</el-menu-item>
-                    <el-menu-item index="diagnoseType">个人</el-menu-item>
-                    <el-menu-item index="diagnoseType">审核</el-menu-item>
+                    <el-menu-item index="passengerOrigin">客源</el-menu-item>
+                    <el-menu-item index="clinchDeal">成交</el-menu-item>
+                    <el-menu-item index="achievements">业绩</el-menu-item>
+                    <el-menu-item index="personal">个人</el-menu-item>
+                    <el-menu-item index="audit">审核</el-menu-item>
                    <!-- <el-submenu index="1">
                         <template slot="title">
                             <i class="el-icon-message"></i>
@@ -50,8 +50,18 @@
                     </el-submenu> -->
                 </el-menu>
             </nav>
-             <i class="el-icon-bell bell"></i>
-             <i class="el-icon-setting person"></i>
+            <span class="f22">
+                <i class="el-icon-tickets "></i>
+            </span>
+            <span class="f22">
+                <el-badge :value="12" class="item ">
+                    <i class="el-icon-bell "></i>
+                </el-badge>
+             </span>
+             <span class="f22">
+                 <i class="el-icon-setting "></i>
+             </span>
+             
         </header>
         <section class="this_section">
             <!-- <nav class="this_nav">
@@ -96,7 +106,11 @@ export default {
             border:none;
         }
         .f22{
+            margin-right: 20px;
             font-size:22px;
+            i{
+                font-size:22px;
+            }
         }
         display:flex;
         flex-direction:column;
