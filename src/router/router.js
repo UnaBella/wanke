@@ -50,6 +50,7 @@ const FastWrite = resolve => {
         })
     }
 
+
 const routes= [
 
     {   path: '/Admin',
