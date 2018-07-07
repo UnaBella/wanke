@@ -15,8 +15,9 @@ export default {
 	};
 </script>
 <style lang="less">
-@import "../../../assets/css/element.less";
+@import "../assets/css/element.less";
 
 .home {
+	border:1px solid red;
 }
 </style>

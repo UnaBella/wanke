@@ -8,6 +8,18 @@ const Admin = resolve => {
         resolve(require('../Admin.vue'))
     })
 }
+// 首页
+const Home = resolve => {
+    require.ensure(['../component/home.vue'], () => {
+        resolve(require('../component/home.vue'))
+    })
+}
+// 房源
+const HouseResource = resolve => {
+    require.ensure(['../component/houseResource.vue'], () => {
+        resolve(require('../component/houseResource.vue'))
+    })
+}
 
 //默认页面
 const Default = resolve => {
@@ -58,9 +70,13 @@ const routes= [
         children:[
             {	path: 'fastWrite',				component: FastWrite, 			name: '快速书写模板'},
             {	path: 'log',					component: Log, 				name: '日志管理'},
-            {	path: 'radiationPlugin',		component: RadiationPlugin, 	name: '放射插件'},
+            {   path: 'radiationPlugin',        component: RadiationPlugin,     name: '放射插件'},
+            
             {	path: 'diagnoseType',			component: DiagnoseType, 		name: '就诊类别'},
             {	path: 'Test',					component: Test, 				name: '公用模块'},
+
+            {   path: 'home',                   component: Home,                name: '首页'},
+            {   path: 'houseResource',                   component: HouseResource,                name: '房源'},
         ] },
    
     {	path: '/default',				component: Default, 			name: '默认首页'},

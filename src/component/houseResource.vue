@@ -1,6 +1,6 @@
 <template>
-    <section class="home">
-        首页
+    <section class="houseResource">
+        房源
     </section>
 </template>
 <script>
@@ -15,8 +15,9 @@ export default {
 	};
 </script>
 <style lang="less">
-@import "../../../assets/css/element.less";
+@import "../assets/css/element.less";
 
-.home {
+.houseResource {
+	border:1px solid red;
 }
 </style>
