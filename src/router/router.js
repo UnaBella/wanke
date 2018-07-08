@@ -21,6 +21,14 @@ const HouseResource = resolve => {
     })
 }
 
+// 房源详情
+const houseDetails = resolve => {
+    require.ensure(['../component/houseDetails.vue'], () => {
+        resolve(require('../component/houseDetails.vue'))
+    })
+}
+
+
 //默认页面
 const Default = resolve => {
     require.ensure(['../component/default.vue'], () => {
@@ -68,19 +76,19 @@ const routes= [
     {   path: '/Admin',
         component: Admin,
         children:[
-            {	path: 'fastWrite',				component: FastWrite, 			name: '快速书写模板'},
-            {	path: 'log',					component: Log, 				name: '日志管理'},
-            {   path: 'radiationPlugin',        component: RadiationPlugin,     name: '放射插件'},
+            {	path: 'fastWrite',			component: FastWrite, 			name: '快速书写模板'},
+            {	path: 'log',				component: Log, 				name: '日志管理'},
+            {   path: 'radiationPlugin',    component: RadiationPlugin,     name: '放射插件'},
             
-            {	path: 'diagnoseType',			component: DiagnoseType, 		name: '就诊类别'},
-            {	path: 'Test',					component: Test, 				name: '公用模块'},
+            {	path: 'diagnoseType',		component: DiagnoseType, 		name: '就诊类别'},
+            {	path: 'Test',	     		component: Test, 				name: '公用模块'},
 
-            {   path: 'home',                   component: Home,                name: '首页'},
-            {   path: 'houseResource',                   component: HouseResource,                name: '房源'},
+            {   path: 'home',               component: Home,                name: '首页'},
+            {   path: 'houseResource',      component: HouseResource,       name: '房源'},
+            {   path: 'houseDetails/:id',       component: houseDetails,        name: '房源详情',  props: true},// 房源详情
         ] },
-   
-    {	path: '/default',				component: Default, 			name: '默认首页'},
-     {  path: '*',                      redirect: '/default'},
+    { path: '/default',				component: Default, 			name: '默认首页'},
+    { path: '*',                      redirect: '/default'},
 ]
 
 const router = new VueRouter({
