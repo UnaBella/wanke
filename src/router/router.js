@@ -82,7 +82,7 @@ const routes= [
         component: Admin,
         children:[
 
-            // {   path: 'houseDetails/:id',       component: HouseDetails,        name: '房源详情',  props: true},// 房源详情
+            {   path: 'houseDetails/:id',       component: HouseDetails,        name: '房源详情',  props: true},// 房源详情
 
 
 
