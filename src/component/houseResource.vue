@@ -42,7 +42,7 @@
 
                 <el-table :data="tableData" size="medium" style="width: 100%" @row-click="examineById">
                     <el-table-column label="标题图" width="180">
-                        <template slot-scope="scope">
+                        <template scope="scope">
                             <img class="imageUrl" :src="scope.row.imageUrl" alt="">
                         </template>
                     </el-table-column>
@@ -160,35 +160,7 @@ export default {
 
     computed: {
     },
-    filter:{
-        typeFilter(type){
-            var text;
-            if (type == null){
-                text = "(无单位)"
-            }
-            else{
-                switch(type){
-                    case 1:
-                        text = '(kg)';
-                        break;
-                    case 2:
-                        text = '(个)';
-                        break;
-                    case 3:
-                        text = '(包)';
-                        break;
-                    case 4:
-                        text = '(桶)';
-                        break;
-                    case 5:
-                        text = '(袋)';
-                        break;
-                    default: ;
-                };
-            }
-            return (text)
-        }
-    },
+    
 
     methods: {
         search(){
