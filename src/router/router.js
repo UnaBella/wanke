@@ -58,6 +58,13 @@ const HouseDetails = resolve => {
     })
 }
 
+// 客源详情
+const passengerDetails = resolve => {
+    require.ensure(['../component/passengerDetails.vue'], () => {
+        resolve(require('../component/passengerDetails.vue'))
+    })
+}
+
 
 //默认页面
 const Default = resolve => {
@@ -83,6 +90,7 @@ const routes= [
         children:[
 
             {   path: 'houseDetails/:id',       component: HouseDetails,        name: '房源详情',  props: true},// 房源详情
+            {   path: 'passengerDetails/:id',   component: passengerDetails,    name: '房源详情',  props: true},// 客源详情
 
 
 
