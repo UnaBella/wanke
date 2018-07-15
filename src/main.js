@@ -2,6 +2,7 @@ import Vue 				from 'vue'
 import App 				from './App.vue'
 import store			from './vuex/vuex.js'
 import router           from'./router/router.js';
+import _ from 'lodash';
 import ElementUI 		from 'element-ui'
 import './resource/resiyrce.js';
 import './component/custom/custom.js';

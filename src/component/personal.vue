@@ -18,7 +18,9 @@
                                             :on-error="handleError">
                                         <img src="https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=997774994,3212421299&fm=85&s=6F5A0FC106032EE77999A51B030080D2" alt="">
                                     </el-upload>
-                                    <el-button size="mini" type="text">修改密码</el-button>
+                                    <el-button size="mini" type="text" @click="passHandle">
+                                        修改密码
+                                    </el-button>
                                 </div>
                                 <div class="person-form">
                                     <el-form :model="form" status-icon ref="form" label-width="120px" class="demo-ruleForm">
@@ -35,6 +37,14 @@
                     </div>
                 </el-col>
             </el-row>
+
+            <el-dialog title="修改密码" :visible.sync="dialogVisible" width="30%">
+                <span>修改密码</span>
+                <span slot="footer" class="dialog-footer">
+                    <el-button @click="dialogVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                </span>
+            </el-dialog>
         </div>
     </section>
 </template>
@@ -47,10 +57,18 @@ export default {
                 user_name: '李白',
                 number: '12306',
                 phone: '13099997788',
+
+
             },
+
+            dialogVisible: false,
         };
     },
     methods: {
+        passHandle(){
+            this.dialogVisible = true;
+        },
+
         handleSuccess(response, file, fileList) {
             console.log(response, file, fileList);
         },
