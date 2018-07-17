@@ -220,14 +220,71 @@
                     </span>
                 </el-dialog>
 
-                <el-dialog title="实勘添加" :visible.sync="examineVisible" width="50%">
-                    <el-form :model="examineForm" ref="examineForm" label-width="60px" class="demo-ruleForm">
-                        <el-form-item label="室:">{{ examineForm.bedroom }}</el-form-item>
-                        <el-form-item label="厅:">{{ examineForm.sittingRoom }}</el-form-item>
-                        <el-form-item label="卫:">{{ examineForm.toilet }}</el-form-item>
-                        <el-form-item label="厨:">{{ examineForm.kitchen }}</el-form-item>
-                        <el-form-item label="户型图:">{{ examineForm.houseTypeImg }}</el-form-item>
-                        <el-form-item label="其他:">{{ examineForm.other }}</el-form-item>
+                <el-dialog title="实勘添加" :visible.sync="examineVisible" width="80%">
+                    <el-form :model="examineForm" ref="examineForm" label-width="60px"
+                             class="demo-ruleForm examine-form">
+                        <el-form-item label="室:">
+                            <el-upload
+                                    v-for="(item, index) in examineForm.bedroom"
+                                    action="https://jsonplaceholder.typicode.com/posts/"
+                                    :auto-upload='false'
+                                    :show-file-list="false"
+                                    list-type="picture-card"
+                                    :on-change='changeUpload'>
+                                <img v-if="item.imgUrl != ''" :src="item.imgUrl" alt="">
+                                <i v-else class="el-icon-plus"></i>
+                            </el-upload>
+                        </el-form-item>
+                        <el-form-item label="厅:">
+                            <el-upload
+                                    v-for="(item, index) in examineForm.sittingRoom"
+                                    action="https://jsonplaceholder.typicode.com/posts/"
+                                    :show-file-list="false"
+                                    list-type="picture-card">
+                                <img v-if="item.imgUrl != ''" :src="item.imgUrl" alt="">
+                                <i v-else class="el-icon-plus"></i>
+                            </el-upload>
+                        </el-form-item>
+                        <el-form-item label="卫:">
+                            <el-upload
+                                    v-for="(item, index) in examineForm.toilet"
+                                    action="https://jsonplaceholder.typicode.com/posts/"
+                                    :show-file-list="false"
+                                    list-type="picture-card">
+                                <img v-if="item.imgUrl != ''" :src="item.imgUrl" alt="">
+                                <i v-else class="el-icon-plus"></i>
+                            </el-upload>
+                        </el-form-item>
+                        <el-form-item label="厨:">
+                            <el-upload
+                                    v-for="(item, index) in examineForm.kitchen"
+                                    action="https://jsonplaceholder.typicode.com/posts/"
+                                    :show-file-list="false"
+                                    list-type="picture-card">
+                                <img v-if="item.imgUrl != ''" :src="item.imgUrl" alt="">
+                                <i v-else class="el-icon-plus"></i>
+                            </el-upload>
+                        </el-form-item>
+                        <el-form-item label="户型图:">
+                            <el-upload
+                                    v-for="(item, index) in examineForm.houseTypeImg"
+                                    action="https://jsonplaceholder.typicode.com/posts/"
+                                    :show-file-list="false"
+                                    list-type="picture-card">
+                                <img v-if="item.imgUrl != ''" :src="item.imgUrl" alt="">
+                                <i v-else class="el-icon-plus"></i>
+                            </el-upload>
+                        </el-form-item>
+                        <el-form-item label="其他:">
+                            <el-upload
+                                    v-for="(item, index) in examineForm.other"
+                                    action="https://jsonplaceholder.typicode.com/posts/"
+                                    :show-file-list="false"
+                                    list-type="picture-card">
+                                <img v-if="item.imgUrl != ''" :src="item.imgUrl" alt="">
+                                <i v-else class="el-icon-plus"></i>
+                            </el-upload>
+                        </el-form-item>
                     </el-form>
                     <span slot="footer" class="dialog-footer">
                         <el-button @click="examineVisible = false">退 出</el-button>
@@ -319,12 +376,46 @@
 
                 examineVisible: false, //实勘dialog
                 examineForm:{
-                    bedroom: 2,
-                    sittingRoom: 1,
-                    toilet: 1,
-                    kitchen: 1,
-                    houseTypeImg: 3,
-                    other: 2,
+                    bedroom: [
+                        {
+                            imgId: 0,
+                            imgUrl: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2604583878,933342668&fm=27&gp=0.jpg'
+                        },
+                        {
+                            imgId: 1,
+                            imgUrl: ''
+                        },
+                    ],
+                    sittingRoom: [
+                        {
+                            imgId: 1,
+                            imgUrl: ''
+                        },
+                    ],
+                    toilet: [
+                        {
+                            imgId: 0,
+                            imgUrl: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2604583878,933342668&fm=27&gp=0.jpg'
+                        }
+                    ],
+                    kitchen: [
+                        {
+                            imgId: 1,
+                            imgUrl: ''
+                        },
+                    ],
+                    houseTypeImg: [
+                        {
+                            imgId: 0,
+                            imgUrl: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2604583878,933342668&fm=27&gp=0.jpg'
+                        }
+                    ],
+                    other: [
+                        {
+                            imgId: 1,
+                            imgUrl: ''
+                        },
+                    ],
                 },
 
                 traceForm: {
@@ -491,6 +582,12 @@
                     type: 'success'
                 });
             },  //确定选择
+
+
+            changeUpload(file, fileList) {
+                console.log(fileList)
+            },  //上传
+
 
 
 
@@ -674,6 +771,33 @@
                         }
                     }
                 }
+
+                .el-dialog{
+                    .examine-form{
+                        .el-form-item{
+                            overflow: hidden;
+                            .el-upload{
+                                width: 100px;
+                                height: 100px;
+                                line-height: 106px;
+                                margin-left: 20px;
+                                cursor: pointer;
+                                float: left;
+                                img{
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            }
+                            .el-upload:hover {
+                                border-color: #409EFF;
+                            }
+
+
+                        }
+
+                    }
+                }
+
             }
         }
     }
