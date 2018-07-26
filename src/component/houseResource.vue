@@ -29,6 +29,9 @@
                                        @click="searchTotalPrice(index, formData.totalPriceList)">
                                 {{ item.name }}
                             </el-button>
+                            <el-input size="mini" v-model="formData.priceUp" placeholder="请输入"></el-input> -
+                            <el-input size="mini" v-model="formData.priceDown" placeholder="请输入"></el-input>
+                            <el-button type="text" @click="search">确定</el-button>
                         </el-form-item>
 
                     </el-form>
@@ -124,9 +127,17 @@ export default {
                         name: '200万-250万',
                         id: 4,
                         choosed: false,
+                    },
+                    {
+                        name: '250万以上',
+                        id: 4,
+                        choosed: false,
                     }
                 ],
                 totalPriceId: 0,
+
+                priceUp: '',
+                priceDown: '',
             },
             tableData: [
                 {
@@ -167,6 +178,8 @@ export default {
             var postData = {
                 houseTypeId: this.formData.houseTypeId,
                 totalPriceId: this.formData.totalPriceId,
+                priceUp: this.formData.priceUp,
+                priceDown: this.formData.priceDown,
             }
             console.log(postData);
         },
@@ -178,6 +191,25 @@ export default {
         searchTotalPrice(index, list){
            var id = this.doSearch(index, list);
            this.formData.totalPriceId = id;
+           if(index == 0){
+               this.formData.priceUp = '';
+               this.formData.priceDown = '';
+           }
+           else if(index == 1){
+               var strBefore = list[index].name.split("万");
+               this.formData.priceUp = '';
+               this.formData.priceDown = strBefore[0];
+           }
+           else if(index == list.length-1){
+               var strLater = list[index].name.split("万");
+               this.formData.priceUp = strLater[0];
+               this.formData.priceDown = '';
+           }
+           else{
+               var strs = list[index].name.split("-");
+               this.formData.priceUp = strs[0].substr(0, strs[0].length-1);
+               this.formData.priceDown = strs[1].substr(0, strs[1].length-1);
+           }
            this.search();
         }, //价格
         doSearch(index, list){
@@ -232,6 +264,12 @@ export default {
                         .el-button{
                             /*margin-left: 10px;*/
                             border: none;
+                        }
+                        .el-input{
+                            width: 100px;
+                            .el-input__inner{
+                                text-align: center;
+                            }
                         }
 
                     }
